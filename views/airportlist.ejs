@@ -1,0 +1,17 @@
+<% include ./partials/head %>
+<main>
+<blockquote>
+<p>Airports</p>
+</blockquote> 
+    <ul class="list-group" style="width:500px;margin:50px;">
+        <% for(var i=0; i < airportlist.length; i++) { %>
+           <li class="list-group-item text-center">
+               <a href="airport/<%= airportlist[i]._key %>" style="color: #070707">
+                <h3><span class="label label-default"><%= airportlist[i].airport %></span></h3>  
+                   <%= airportlist[i].city %>
+               </a>
+           </li>
+        <% } %>
+    </ul>
+</main>
+<% include ./partials/footer %>

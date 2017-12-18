@@ -1,0 +1,37 @@
+<% include ./partials/head %>
+<main>
+    <blockquote>
+        <p>Airports Graph</p>
+    </blockquote> 
+            <% for(var i=0; i < airportGraph.length; i++) { %>
+            <table style="border: 1px solid black; width:500px;margin:50px;">
+                <% for(var j=0; j < airportGraph[i].edges.length; j++) { %>
+                    <tr style="border: 1px solid black; width:200px;margin:50px;">
+                        <td style="border: 1px solid black; width:200px;margin:50px;">
+                            <h3><span class="label label-default">
+                                De <%= airportGraph[i].edges[j]._from %> a  <%= airportGraph[i].edges[j]._to %> 
+                            </span></h3>
+                        </td>
+                        <td style="border: 1px solid black; width:200px;margin:50px;">
+                            <h3><span class="label label-default">
+                                <% var dateStringSalida = airportGraph[i].edges[j].DepTimeUTC, dateRegExp = /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/, match = dateStringSalida.match(dateRegExp), dateSalida = new Date(match[1], match[2] - 1, match[3], match[4], match[5]); %>
+                                <% var dateStringLlegada = airportGraph[i].edges[j].ArrTimeUTC, dateRegExp = /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/, match = dateStringLlegada.match(dateRegExp), dateLlegada = new Date(match[1], match[2] - 1, match[3], match[4], match[5]); %>
+                                Vuelo <%= airportGraph[i].edges[j].FlightNum %>
+                            </span>
+                            </br>
+                            <span class="label label-default">Salida <%= dateSalida %> 
+                            </span>
+                            </br>
+                            <span class="label label-default">Llegada  <%= dateLlegada %> 
+                            </span></h3>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+            <% } %>
+</main>
+
+<% include ./partials/footer %>
+
+
+border-top-color: black;border-top-style: solid;border-top-width: 1px;border-right-color: black;border-right-style: solid;border-right-width: 1px;border-bottom-color: black;border-bottom-style: solid;border-bottom-width: 1px;border-left-color: black;border-left-style: solid;border-left-width: 1px;
